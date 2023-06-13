@@ -21,5 +21,12 @@ function calculateTotalMortgage(percent, contribution, amount, countMonths) {
   let monthlyPayment = creditBody * (interestRate + (interestRate / (((1 + interestRate) ** countMonths) - 1)));
   let fullPayment = monthlyPayment * countMonths;
   let roundedFullPayment = (Math.round(fullPayment * 100) / 100);
-  console.log(roundedFullPayment);
+  return roundedFullPayment;
 }
+
+calculateTotalMortgage(10, 0, 50000, 12);
+calculateTotalMortgage(10, 1000, 50000, 12);
+calculateTotalMortgage(10, 0, 20000, 24);
+calculateTotalMortgage(10, 1000, 20000, 24);
+calculateTotalMortgage(10, 20000, 20000, 24);
+
