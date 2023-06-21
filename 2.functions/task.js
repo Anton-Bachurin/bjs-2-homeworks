@@ -93,5 +93,14 @@ console.log(averageEvenElementsWorker(1, 2, 3, 4, 5, 6, 7, 8, 9));
 console.log(averageEvenElementsWorker(15, 97, 85, 64, 67, 10, 69, 40, 15, 35));
 
 function makeWork (arrOfArr, func) {
+  let maxWorkerResult = arrOfArr[0];
 
+  for (let i = 0; i < arrOfArr.length; i++) {
+    if (arrOfArr[i] > maxWorkerResult) {
+    	maxWorkerResult = arrOfArr[i];
+    }
+  }
+  return maxWorkerResult;
 }
+
+const arr = [[10, 10, 11, 20, 10], [67, 10, 2, 39, 88], [72, 75, 51, 87, 43], [30, 41, 55, 96, 62]];
