@@ -14,17 +14,16 @@ Student.prototype.setSubject = function (subjectName) {
 }
 
 Student.prototype.addMarks = function (...marks) {
-  if ('marks' in Student) {	
-  this.marks.push(marks);
+  if ('marks' in this) {	
+  this.marks.push(...marks);
   };  
 }
 
 Student.prototype.getAverage = function () {
-  if (!'marks' in Student || Student.marks === []) {
+  if (!'marks' in this) {
   	return 0;
   } else {
-  	let average = Student.marks.reduce((acc, item, index, arr) => acc + item / arr.length, 0);
-  	return average;
+  	return average = this.marks.reduce((acc, item, index, arr) => acc + item / arr.length, 0);
   }
 }
 
@@ -33,3 +32,5 @@ Student.prototype.exclude = function (reason) {
   delete this.marks;
   this.excluded = reason;
 }
+
+
