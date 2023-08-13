@@ -74,24 +74,23 @@ class Library {
 	  }
 	}
 
-	findBookBy(type, value) {   //Не работает!!!
-	  if (Array.isArray(type)) {
-	  	return book;
-	  }	else {
-	  	return null;
+	findBookBy(type, value) { 
+	  const book = this.books.find(book => book[type] === value);
+
+	  if (book) {
+	    return book;
+	  } 
+	    return null;
 	  }
-	}
+
+	/*giveBookByName(bookName) {
+      for (let elem in this.books) {
+        if (this.books.elem.name === bookName) {
+          delete this.books.elem;
+        } else {
+          return null;
+        }
+    }*/
 }
-	/*giveBookByName(bookName) {   //Доработать!!!
-		this.name = bookName;
-	}
-}*/
 
-/*let library = new Library("First Library");
 
-library.addBook(amber);
-
-library.addBook(holmes);
-
-console.log(library);
-*/
