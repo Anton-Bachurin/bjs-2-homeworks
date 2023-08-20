@@ -81,16 +81,16 @@ class Library {
 	    return book;
 	  } 
 	    return null;
-	  }
+	}
 
-	/*giveBookByName(bookName) {
-      for (let elem in this.books) {
-        if (this.books.elem.name === bookName) {
-          delete this.books.elem;
-        } else {
-          return null;
-        }
-    }*/
+	giveBookByName(bookName) {
+      const filterByName = this.books.filter(book => book.name === bookName);
+
+      if (filterByName) {
+      	return book;      
+      }
+      return null;
+    }
 }
 
 
