@@ -84,13 +84,15 @@ class Library {
 	}
 
 	giveBookByName(bookName) {
-      const filterByName = this.books.filter(book => book.name === bookName);
+      const isBookHere = this.books.find(book => book.name === bookName);
 
-      if (filterByName) {
-      	return book;      
-      }
-      return null;
-    }
+      if (!isBookHere) {
+      	return null;
+      } else {
+      	const givenBook = isBookHere.filter(elem => elem.name === bookName);
+      	return givenBook;
+      }    
+    }  
 }
 
 
