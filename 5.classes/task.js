@@ -89,8 +89,8 @@ class Library {
       if (!isBookHere) {
       	return null;
       } else {
-      	const givenBook = isBookHere.filter(elem => elem.name === bookName);
-      	return givenBook;
+        this.books.filter(book => book.name !== bookName);
+        return isBookHere;
       }    
     }  
 }
