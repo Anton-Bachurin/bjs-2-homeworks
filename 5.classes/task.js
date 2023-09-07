@@ -89,7 +89,7 @@ class Library {
       if (!isBookHere) {
       	return null;
       } else {
-        this.books.filter(book => book.name !== bookName);
+       this.books = this.books.filter(book => book.name !== bookName);
         return isBookHere;
       }    
     }  
