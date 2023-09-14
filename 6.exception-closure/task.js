@@ -1,17 +1,17 @@
 ﻿function parseCount(numberToParse) {
-  if (Number.isNaN(parseFloat(numberToParse)) === true) {
+  let parsedNumber = parseFloat(numberToParse);
+  if (Number.isNaN(parsedNumber) === true) {
   	throw new Error("Невалидное значение");
   }
-  return parseFloat(numberToParse);
+  return parsedNumber;
 }
 
 function validateCount(numberToParse) {
   try {
- 	parseCount(numberToParse);
+ 	return parseCount(numberToParse);
   } catch (error) {
     return error;
   }
-  return parseCount(numberToParse);
 }
 
 class Triangle {
@@ -32,7 +32,7 @@ class Triangle {
 	get area() {
 	  const p = 0.5 * (this.perimeter);
 	  const s = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
-	  return s.toFixed(3);
+	  return Number(s.toFixed(3));
 	}
 }
 
@@ -40,6 +40,15 @@ function getTriangle(a, b, c) {
   try {
   	return new Triangle(a, b, c);
   } catch (error) {
-  	return new Triangle;
+  	let obj = {
+      get perimeter() {
+      	return "Ошибка! Треугольник не существует";
+      }
+
+      get area() {
+      	return "Ошибка! Треугольник не существует";
+      }
+  	}
+  	return obj;
   }
 }
