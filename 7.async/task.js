@@ -1,48 +1,59 @@
 class AlarmClock {
   constructor () {
   	this.alarmCollection = [];
-  	this.intervalId;
+  	this.intervalId = null;
   }	
 
-  addClock(hh, mm, callback) {
-  	let time = hh + ': ' + mm;
-  	if (hh === undefined || mm === undefined || callback === undefined) {
+  addClock(time, callback) {
+  	if (time === null || callback === undefined) {
   	  throw new Error('Отсутствуют обязательные аргументы');
   	}
 
-  	const sameTime = this.alarmCollection.find(realTime => realTime === time);
+  	const sameTime = this.alarmCollection.find(sameTime => sameTime.time === clock);
 
   	if(sameTime) {
   	  console.warn('Уже присутствует звонок на это же время');
   	}
     
-    let obj = {
-      callback,
-      time,
-      canCall: true
-    }
-    this.alarmCollection.push(obj);
+    this.alarmCollection.push({callback: null, time: null, canCall: true});
   }
 
   removeClock(time) {
-  	this.alarmCollection = this.alarmCollection.filter(timeToDelete => timeToDelete === time);
+  	this.alarmCollection = this.alarmCollection.filter(sameTime => sameTime.time === clock);
   }
 
-  getCurrentFormattedTime(hh, mm) {
-  	return currentTime = hh + ': ' + mm;
+  getCurrentFormattedTime() {
+  	let currentTime = new Date();
+  	return currentTime.toLocaleTimeString();
   }
 
   start() {
-  	if (this.intervalId !== undefined) {
-  	  break;
+  	if (this.intervalId !== null) {
+  	  return this.intervalId;
   	}
 
-  let newInterval = setInterval(function() {
-  	this.alarmCollection.forEach (function (item) {
-  	  if (item = currentTime && canCall = true) {
-  	  	
-  	  }
-  	})
-  }, 1000);
+	let newInterval = setInterval(function() {
+	 this.alarmCollection.forEach (function(sameTime) {
+	   if (sameTime.time === currentTime && canCall === true) {
+	  	 canCall = false;
+	  	 return callback;
+	  	}
+     this.intervalId = newInterval;
+	 })
+	}, 1000);
+  }
+
+  stop() {
+  	clearInterval();
+  	this.intervalId = null;
+  }
+
+  resetAllCalls() {
+  	this.alarmCollection.forEach((element) => element.canCall = true)
+  }
+
+  clearAlarms() {
+  	stop();
+  	this.alarmCollection = [];
   }
 }
